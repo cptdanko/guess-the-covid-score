@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core";
 import { TextField } from "material-ui";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import React, { Component } from "react";
@@ -19,7 +18,7 @@ export class DailyEntryForm extends Component {
             month: "long",
             day: "numeric"
         }).format(new Date());
-        this.state.date = "For date: " + this.todayDateStr;
+        this.state.date = "For: " + this.todayDateStr;
     }
     submitForm = () => {
         const { username, score, date } = this.state;

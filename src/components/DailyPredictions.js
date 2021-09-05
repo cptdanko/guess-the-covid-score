@@ -10,6 +10,15 @@ Date.prototype.withoutTime = function () {
     return d;
 }
 
+Date.prototype.dateOnlyStr = function() {
+  let dateStr = new Intl.DateTimeFormat("en-GB", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+  }).format(new Date());
+  return dateStr;
+}
+
 /**
  * Link for date format: https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
  * @returns 
@@ -17,7 +26,8 @@ Date.prototype.withoutTime = function () {
  export class DailyPredictions extends Component {
 
     state = {
-        dailyPredictions: []
+        dailyPredictions: [],
+        date: new Date().dateOnlyStr()
     };
     constructor() {
         super();
@@ -37,6 +47,7 @@ Date.prototype.withoutTime = function () {
             <MuiThemeProvider>
               <React.Fragment >
                 <AppBar title="Guess the daily case numbers" />
+                <h2>{this.state.date}</h2>
                 <List className="Name-list" onChange={this.rerender}>
                   {this.state.dailyPredictions.map((elem) => (
                     [
